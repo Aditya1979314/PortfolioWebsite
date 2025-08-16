@@ -13,9 +13,9 @@ const Navbar = () => {
         <a href="#about" className="font-medium hover:text-blue-600">
           ABOUT
         </a>
-        <a href="#projects" className="font-medium hover:text-blue-600">
+        <Link to="/projects" className="font-medium hover:text-blue-600">
           PROJECTS
-        </a>
+        </Link>
         <a href="#contact" className="font-medium hover:text-blue-600">
           CONTACT
         </a>

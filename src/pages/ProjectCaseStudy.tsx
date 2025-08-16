@@ -1,22 +1,39 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import FooterSection from '../components/FooterSection';
-import { Link } from 'react-router-dom';
-const ProjectCaseStudy = () => {
+import { Link, useParams } from 'react-router-dom';
+
+interface Project{
+  id:number,
+  title:string,
+  description:string,
+  image ?:string,
+  link:string
+}
+
+interface Homeprops{
+  projects:Project[]
+}
+
+const ProjectCaseStudy = ({projects}:Homeprops) => {
+  const{id} = useParams();
+  const projectid = Number(id);
+  const project = projects.find(p=>p.id === projectid);
   // Sample tools used in the project
   const tools = ['HTML', 'CSS', 'JavaScript', 'React', 'SASS', 'GIT', 'Shopify', 'Wordpress', 'Google ADS', 'Facebook Ads', 'Android', 'iOS'];
+  if(!project){
+    return <div>Not found the page</div>
+  }
   return <div className="w-full">
       {/* Hero Section */}
       <section className="w-full bg-blue-600 text-white py-24 md:py-32">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-8">PROJECT 2</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-8">{project.title}</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-            in numquam incidunt earum quaerat cum fuga, atque similique natus
-            nobis sit.
+          {project.description}
           </p>
           <div className="mt-12">
-            <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded hover:bg-gray-100 transition-colors">
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded hover:bg-gray-100 transition-colors">
               LIVE LINK
             </a>
           </div>
