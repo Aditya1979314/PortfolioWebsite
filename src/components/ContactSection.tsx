@@ -29,11 +29,7 @@ const ContactSection = () => {
   return <section id="contact" className="w-full bg-blue-600 py-16 md:py-24 text-white">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-2">CONTACT</h2>
-        <div className="w-16 h-1 bg-white mx-auto mb-8"></div>
-        <p className="text-center max-w-3xl mx-auto mb-16">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic facilis
-          tempora explicabo quae quod deserunt eius sapiente
-        </p>
+        <div className="w-16 h-1 bg-white mx-auto mb-16"></div>
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <div className="mb-6">
             <label htmlFor="name" className="block text-gray-700 font-medium mb-2">

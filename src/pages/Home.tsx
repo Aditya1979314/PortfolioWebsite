@@ -9,8 +9,11 @@ interface Project{
   id:number,
   title:string,
   description:string,
-  image ?:string,
-  link:string
+  heading:string,
+  image :string,
+  livelink:string,
+  githublink:string,
+  toolsused:string[]
 }
 
 interface Homeprops{

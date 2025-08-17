@@ -2,34 +2,22 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Change to `next/link` if using Next.js
 
-const projects = [
-  {
-    id: 1,
-    title: "Portfolio Website",
-    description: "A personal portfolio to showcase my work and skills.",
-    image: "https://via.placeholder.com/300x200",
-  },
-  {
-    id: 2,
-    title: "E-commerce Store",
-    description: "An online store built with React and Firebase.",
-    image: "https://via.placeholder.com/300x200",
-  },
-  {
-    id: 3,
-    title: "Task Manager",
-    description: "A task management app to track daily work.",
-    image: "https://via.placeholder.com/300x200",
-  },
-  {
-    id: 4,
-    title: "Blog Platform",
-    description: "A blog platform with markdown support.",
-    image: "https://via.placeholder.com/300x200",
-  },
-];
+interface Project{
+  id:number,
+  title:string,
+  description:string,
+  heading:string,
+  image :string,
+  livelink:string,
+  githublink:string,
+  toolsused:string[]
+}
 
-const ProjectsPage: React.FC = () => {
+interface Homeprops{
+  projects:Project[]
+}
+
+const ProjectsPage = ({projects}:Homeprops) => {
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <h1 className="text-4xl font-bold text-center mb-10">All Projects</h1>
@@ -48,7 +36,7 @@ const ProjectsPage: React.FC = () => {
             <div className="p-4 flex flex-col flex-grow">
               <h2 className="text-lg font-semibold">{project.title}</h2>
               <p className="text-gray-600 mt-2 text-sm flex-grow">
-                {project.description}
+                {project.heading}
               </p>
               <Link
                 to={`/projects/${project.id}`} // Route to ProjectCaseStudy

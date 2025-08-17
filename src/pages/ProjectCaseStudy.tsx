@@ -7,8 +7,11 @@ interface Project{
   id:number,
   title:string,
   description:string,
+  heading:string,
   image ?:string,
-  link:string
+  livelink:string,
+  githublink:string,
+  toolsused:string[]
 }
 
 interface Homeprops{
@@ -20,7 +23,6 @@ const ProjectCaseStudy = ({projects}:Homeprops) => {
   const projectid = Number(id);
   const project = projects.find(p=>p.id === projectid);
   // Sample tools used in the project
-  const tools = ['HTML', 'CSS', 'JavaScript', 'React', 'SASS', 'GIT', 'Shopify', 'Wordpress', 'Google ADS', 'Facebook Ads', 'Android', 'iOS'];
   if(!project){
     return <div>Not found the page</div>
   }
@@ -30,10 +32,10 @@ const ProjectCaseStudy = ({projects}:Homeprops) => {
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-8">{project.title}</h1>
           <p className="text-xl max-w-3xl mx-auto">
-          {project.description}
+          {project.heading}
           </p>
           <div className="mt-12">
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded hover:bg-gray-100 transition-colors">
+            <a href={project.livelink} target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded hover:bg-gray-100 transition-colors">
               LIVE LINK
             </a>
           </div>
@@ -45,20 +47,7 @@ const ProjectCaseStudy = ({projects}:Homeprops) => {
           <h2 className="text-3xl font-bold mb-8">Project Overview</h2>
           <div className="max-w-4xl text-gray-700 space-y-6">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-              alias tenetur minus quaerat aliquid, aut provident blanditiis,
-              deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-              mollitia laborum corrupti ullam rem. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Neque alias tenetur minus quaerat
-              aliquid, aut provident blanditiis, deleniti aspernatur ipsam eaque
-              veniam voluptatem corporis vitae mollitia laborum corrupti ullam
-              rem?
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-              alias tenetur minus quaerat aliquid, aut provident blanditiis,
-              deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-              mollitia laborum corrupti ullam rem?
+              {project.description}
             </p>
           </div>
         </div>
@@ -68,7 +57,7 @@ const ProjectCaseStudy = ({projects}:Homeprops) => {
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold mb-8">Tools Used</h2>
           <div className="flex flex-wrap gap-4">
-            {tools.map((tool, index) => <span key={index} className="bg-gray-200 py-2 px-6 rounded font-medium">
+            {project.toolsused.map((tool, index) => <span key={index} className="bg-gray-200 py-2 px-6 rounded font-medium">
                 {tool}
               </span>)}
           </div>
@@ -79,10 +68,10 @@ const ProjectCaseStudy = ({projects}:Homeprops) => {
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold mb-8">See Live</h2>
           <div className="flex flex-wrap gap-4">
-            <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded hover:bg-blue-700 transition-colors">
+            <a href={project.livelink} target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded hover:bg-blue-700 transition-colors">
               LIVE LINK
             </a>
-            <a href="https://github.com/example/project" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded border border-blue-600 hover:bg-gray-50 transition-colors">
+            <a href={project.githublink} target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded border border-blue-600 hover:bg-gray-50 transition-colors">
               CODE LINK
             </a>
           </div>
