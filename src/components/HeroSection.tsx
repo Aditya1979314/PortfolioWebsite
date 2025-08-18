@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   const name = "ADITYA SINGH".split("");
+  const tagline = "Building fast, reliable, and modern web applications with full-stack expertise.".split(
+    ""
+  );
 
   return (
     <section className="w-full bg-blue-600 text-white relative overflow-hidden">
@@ -13,6 +16,7 @@ const HeroSection = () => {
         <a
           href="https://www.linkedin.com/in/aditya-singh-76376721a/"
           target="_blank"
+          rel="noopener noreferrer"
           className="bg-blue-700 p-4 hover:bg-blue-800 transition-colors"
         >
           <LinkedinIcon size={24} />
@@ -20,6 +24,7 @@ const HeroSection = () => {
         <a
           href="https://github.com/Aditya1979314"
           target="_blank"
+          rel="noopener noreferrer"
           className="bg-blue-700 p-4 hover:bg-blue-800 transition-colors"
         >
           <GithubIcon size={24} />
@@ -27,6 +32,7 @@ const HeroSection = () => {
         <a
           href="https://x.com/Aditya31872628"
           target="_blank"
+          rel="noopener noreferrer"
           className="bg-blue-700 p-4 hover:bg-blue-800 transition-colors"
         >
           <TwitterIcon size={24} />
@@ -69,7 +75,7 @@ const HeroSection = () => {
                   }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  {letter}
+                  {letter === " " ? "\u00A0" : letter}
                 </motion.span>
               </motion.span>
             ))}
@@ -78,13 +84,35 @@ const HeroSection = () => {
 
         {/* Typing effect for tagline */}
         <motion.p
-          initial={{ width: 0 }}
-          animate={{ width: "100%" }}
-          transition={{ duration: 3, ease: "easeInOut" }}
-          className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-12 whitespace-nowrap overflow-hidden border-r-4 border-white pr-2"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.03 },
+            },
+          }}
+          className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-12 text-center leading-relaxed"
         >
-          Building fast, reliable, and modern web applications with full-stack
-          expertise.
+          {tagline.map((char, i) => (
+            <motion.span
+              key={i}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1 },
+              }}
+              transition={{ duration: 0.05 }}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+          {/* Blinking cursor */}
+          <motion.span
+            className="inline-block ml-1 border-r-4 border-white"
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ duration: 1, repeat: Infinity }}
+          />
         </motion.p>
 
         {/* CTA Button */}
